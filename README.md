@@ -1,6 +1,6 @@
-# openclaw-config
+# OpenClaw Docker Config
 
-Version-controlled OpenClaw configuration deployed to a Hetzner VPS via Docker.
+Docker configuration and application setup for OpenClaw. Companion repository to [openclaw-terraform-hetzner](https://github.com/andreesg/openclaw-terraform-hetzner).
 
 ```
 ┌──────────────┐                        ┌──────────────────────┐
