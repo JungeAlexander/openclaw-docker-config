@@ -51,7 +51,7 @@ specific files from your local checkout to the VPS:
 1. **In the infra repo**, set `CONFIG_DIR` in `config/inputs.sh` to point to this repo's directory
 2. **Log in to GHCR** (one-time, on your laptop):
    ```bash
-   echo "$GHCR_PAT" | docker login ghcr.io -u andreesg --password-stdin
+   echo "$GHCR_PAT" | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
    ```
 3. **Build and push the Docker image**:
    ```bash
@@ -208,14 +208,14 @@ In the infra repo:
 
 Images are built locally and pushed to GHCR via `scripts/build-and-push.sh`:
 
-- `ghcr.io/andreesg/openclaw-docker-config/openclaw-gateway:latest` — default tag, what the VPS pulls
-- `ghcr.io/andreesg/openclaw-docker-config/openclaw-gateway:<sha>` — pinned to a specific commit
+- `ghcr.io/YOUR_USERNAME/openclaw-docker-config/openclaw-gateway:latest` — default tag, what the VPS pulls
+- `ghcr.io/YOUR_USERNAME/openclaw-docker-config/openclaw-gateway:<sha>` — pinned to a specific commit
 
 **One-time GHCR login (laptop):**
 
 ```bash
 # Create a PAT at github.com/settings/tokens with write:packages scope
-echo "$GHCR_PAT" | docker login ghcr.io -u andreesg --password-stdin
+echo "$GHCR_PAT" | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
 ```
 
 **Rollback to a previous version:**
