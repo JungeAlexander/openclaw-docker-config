@@ -97,9 +97,9 @@ This repository includes a minimal set of generic skills in `config/skills-manif
 
 ### ClawHub Skills
 
-[ClawHub](https://hub.claw.run/) is the community skill registry for OpenClaw. To add a ClawHub skill:
+[ClawHub](https://clawhub.ai/) is the community skill registry for OpenClaw. To add a ClawHub skill:
 
-1. **Find the skill** at [hub.claw.run](https://hub.claw.run/) (e.g., `pdf`, `ms-office-suite`, `jira`)
+1. **Find the skill** at [hub.claw.run](https://clawhub.ai/) (e.g., `pdf`, `ms-office-suite`, `jira`)
 2. **Add to manifest**: Edit `config/skills-manifest.txt` and add the skill name
    ```
    # PDF processing
