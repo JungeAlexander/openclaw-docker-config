@@ -14,3 +14,6 @@ system-monitor
 
 # Conventional Commits — format commit messages properly
 conventional-commits
+
+# GitHub — interact with GitHub (issues, PRs, CI runs) via gh CLI
+github
