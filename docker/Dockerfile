@@ -18,6 +18,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tini \
   && rm -rf /var/lib/apt/lists/*
 
+# Install GitHub CLI (required by github skill)
+RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+      | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+      > /etc/apt/sources.list.d/github-cli.list \
+  && apt-get update && apt-get install -y --no-install-recommends gh \
+  && rm -rf /var/lib/apt/lists/*
+
 # Pin OpenClaw version for reproducible builds — bump explicitly when upgrading
 ARG OPENCLAW_VERSION=2026.2.6-3
 RUN npm install -g openclaw@${OPENCLAW_VERSION}
