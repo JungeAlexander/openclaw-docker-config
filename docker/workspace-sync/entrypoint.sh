@@ -23,8 +23,19 @@ workspace-sync.sh
 echo ""
 
 # Set up cron — pass env vars through to the cron job
+# Save env in a file that can be safely sourced (values may contain spaces)
 env > /tmp/workspace-sync.env
-echo "$SCHEDULE /usr/bin/env - \$(cat /tmp/workspace-sync.env | tr '\\n' ' ') /usr/local/bin/workspace-sync.sh >> /proc/1/fd/1 2>> /proc/1/fd/2" > /etc/crontabs/root
+
+cat > /usr/local/bin/run-sync.sh << 'WRAPPER'
+#!/bin/sh
+while IFS= read -r line; do
+    export "$line"
+done < /tmp/workspace-sync.env
+exec /usr/local/bin/workspace-sync.sh
+WRAPPER
+chmod +x /usr/local/bin/run-sync.sh
+
+echo "$SCHEDULE /usr/local/bin/run-sync.sh >> /proc/1/fd/1 2>> /proc/1/fd/2" > /etc/crontabs/root
 
 echo "[workspace-sync] Cron configured, starting scheduler..."
 exec crond -f -l 2
