@@ -30,7 +30,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
 COPY --from=ghcr.io/astral-sh/uv:0.10.4 /uv /uvx /bin/
 
 # Pin OpenClaw version for reproducible builds — bump explicitly when upgrading
-ARG OPENCLAW_VERSION=v2026.2.22
+ARG OPENCLAW_VERSION=2026.2.22-2
 RUN npm install -g openclaw@${OPENCLAW_VERSION}
 
 # Install ClawHub CLI for skill management
